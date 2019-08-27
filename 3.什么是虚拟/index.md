@@ -36,7 +36,7 @@ for(let key in oDiv){
 }
 console.log(str)
 ```
-[![](img.png)
+![](img.png)
 可以看到一个`DOM`节点还是比较“庞大”的。
 
 # Vue中虚拟DOM的实现
