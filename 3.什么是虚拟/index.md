@@ -29,6 +29,7 @@
 用js对象来描述真实的`DOM`节点，
 * 一是减少操作真实`DOM`。
 * 二是可以用数据驱动`DOM`更新。
+
 打印一个`DOM`节点的内容
 ```javascript
 let oDiv = document.createElement('div');
