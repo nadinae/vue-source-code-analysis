@@ -69,7 +69,15 @@ Vue.compile = compileToFunctions
 export default Vue
 
 ```
-首先，从`import Vue from './runtime/index`文件夹下拿到`$mount`方法用`mount`变量将他缓存起来，然后重新在原型上定义`$mount`方法。在`$mount`方法中会对挂载的`el`对象进行判断，不允许挂载到`html`或者`body`上。如果挂载到`html`或者`body`上的话在编译模板的时候会覆盖`html`或者`body`标签，当值文档流错误。
+首先，从`import Vue from ./runtime/index`文件夹下拿到`$mount`方法用`mount`变量将他缓存起来，然后重新在原型上定义`$mount`方法。这样做的意义是为了在` runtime only `版本的Vue中直接用。
+
+在`./runtime/index`文件中的`$mount`方法会接收两个参数，第一个`el`，他表示挂载的元素，可以是字符串也可以是`DOM`对象。第二个参数是和服务端渲染相关，在浏览器环境下我们不需要传第二个参数。
+
+在新定义的`$mount`方法中会对挂载的`el`对象进行判断，不允许挂载到`html`或者`body`上。如果挂载到`html`或者`body`上的话在编译模板的时候会覆盖`html`或者`body`标签，导致文档流错误。
 在新定义的方法中会进行`if (!options.render)`判断。
-* 如果有`render`方法那么直接调用缓存的`mount`方法。
-* 如果没有`render`方法，在新定义的`$mount`方法中，会
+
++ 如果有`render`方法那么直接调用缓存的`mount`方法。
++ 如果没有`render`方法，在新定义的`$mount`方法中，并且判断有没有写`template`,
+  + 有`template`进行判断，拿到模板内容。
+  + 没有`template`调用`getOuterHTML`获取挂载对象本身内容
+
