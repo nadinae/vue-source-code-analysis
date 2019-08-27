@@ -174,4 +174,4 @@ new Watcher(vm, updateComponent, noop, {
     }
   }, true /* isRenderWatcher */)
 ```
-这个方法会执行`vm._update、vm._render（生成VNode）`这两个方法。而`updateComponent`方法的执行是创建了一个渲染`Watcher`，`Watcher`从`import Watcher from '../observer/watcher'`引入。
+`mountComponent` 核心就是先调用 `vm._render` 方法先生成虚拟 `Node`，再实例化一个渲染`Watcher`，在它的回调函数中会调用 `updateComponent` 方法，最终调用 `vm._update` 更新 `DOM`。
