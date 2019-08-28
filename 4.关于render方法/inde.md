@@ -163,3 +163,5 @@ vm.$createElement = (a, b, c, d) => createElement(vm, a, b, c, d, true)
 ```
 根据注释可以判断`vm._c`就是`template`被编译成`render`函数使用。
 `vm.$createElement`是用户手写`render`方法使用的。
+
+**最终**`createElement`**会返回创建好的VNode。然后会执行_update方法渲染成真是DOM，而_update方法会在首次渲染和数据更新的时候触发**

@@ -157,4 +157,5 @@ export function cloneVNode (vnode: VNode): VNode {
   return cloned
 }
 ```
-虚拟DOM会通过`diff`算法对比修改前后数据的变化来更新某一块的DOM，真实DOM的操作会对整块DOM结构进行删除替换等操作。
+虚拟DOM会通过`diff`算法对比修改前后数据的变化来更新某一块的DOM，真实DOM的操作会对整块DOM结构进行删除替换等操作，会引起整个DOM树的重绘重排。
+我们先根据真实DOM生成一颗virtual DOM，当virtual DOM某个节点的数据改变后会生成一个新的Vnode，然后Vnode和oldVnode作对比，发现有不一样的地方就直接修改在真实的DOM上，然后使oldVnode的值为Vnode。
