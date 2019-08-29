@@ -138,7 +138,7 @@ export function normalizeChildren (children: any): ?Array<VNode> {
       : undefined
 }
 ```
-  * `simpleNormalizeChildren`调用理论上编译生成`children`已经是VNode节点，但是functional component 函数式组件返回的是一个数组而不是一个根节点，所以用simpleNormalizeChildren方法将children数组处理成只有一层
+  * **`simpleNormalizeChildren`调用理论上编译生成`children`已经是VNode节点，但是functional component 函数式组件返回的是一个数组而不是一个根节点，所以用simpleNormalizeChildren方法将children数组处理成只有一层**
   
   ![](img/VNode.png)
   ![](img/VNode_eg.png)
@@ -149,7 +149,6 @@ export function normalizeChildren (children: any): ?Array<VNode> {
 
 从截取`_createElement`的源码分析，他会对传入的`tag`进行判断，
   * **如果是字符串类型，接着判断如果是内置的节点就直接创建普通的VNode。**
-
     现在已经对`children`已经规范化，然后调用：
     ```javascript
     if (config.isReservedTag(tag)) {
