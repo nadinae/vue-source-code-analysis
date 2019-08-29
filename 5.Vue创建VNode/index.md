@@ -100,8 +100,10 @@ _createElement (
 ## children的规范化
 
 由于Virtual DOM是一个和DOM树对应的结构，因此Virtual DOM的子节点也应该是VNode类型，所以我们需要对任意类型的`children`规范为标准的VNode数组。根据`render`函数的实现方式传入不同的`normalizationType`采用不同的规范`children`的方法：
- * normalizeChildren(children)————直接写的`render`函数
- * simpleNormalizeChildren(children)————`render`函数是编译生成的既用户写的是`template`
+
+ * normalizeChildren(children)————(用于直接写的`render`函数)
+ * simpleNormalizeChildren(children)————(用于`render`函数是编译生成的既用户写的是`template`)
+
 定义在`src/core/vdom/helpers/normalzie-children.js `中。
 ```javascript
 // The template compiler attempts to minimize the need for normalization by
@@ -136,7 +138,7 @@ export function normalizeChildren (children: any): ?Array<VNode> {
       : undefined
 }
 ```
-  * `simpleNormalizeChildren`调用理论上编译生成`children`已经是VNode节点，但是functional component 函数式组件返回的是一个数组而不是一个根节点，所以simpleNormalizeChildren会将children数组处理成只有一层
+  * `simpleNormalizeChildren`调用理论上编译生成`children`已经是VNode节点，但是functional component 函数式组件返回的是一个数组而不是一个根节点，所以用simpleNormalizeChildren方法将children数组处理成只有一层
   
   ![](img/VNode.png)
   ![](img/VNode_eg.png)
