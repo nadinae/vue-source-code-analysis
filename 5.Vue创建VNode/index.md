@@ -143,12 +143,12 @@ export function normalizeChildren (children: any): ?Array<VNode> {
   ![](img/VNode.png)
   ![](img/VNode_eg.png)
   
-  * `normalizeChildren`调用场景有 2 种
+  * **`normalizeChildren`调用场景有 2 种**
     + 一个场景是 render 函数是用户手写的，当 children 只有一个节点的时候，Vue.js 从接口层面允许用户把 children 写成基础类型用来创建单个简单的文本节点，这种情况会调用 createTextVNode 创建一个文本节点的 VNode
     + 另一个场景是当编译 slot、v-for 的时候会产生嵌套数组的情况，会调用 normalizeArrayChildren 方法
 
 从截取`_createElement`的源码分析，他会对传入的`tag`进行判断，
-  * 如果是字符串类型，接着判断如果是内置的节点就直接创建普通的VNode。
+  * **如果是字符串类型，接着判断如果是内置的节点就直接创建普通的VNode。**
 
     现在已经对`children`已经规范化，然后调用：
     ```javascript
@@ -162,7 +162,7 @@ export function normalizeChildren (children: any): ?Array<VNode> {
     ```
     生成VNode。
 
-  * 如果是为已注册的组件名，则通过 createComponent 创建一个组件类型的 VNode，否则创建一个未知的标签的 VNode。 如果是 tag 一个 Component 类型，则直接调用 createComponent 创建一个组件类型的 VNode 节点。
+  * **如果是为已注册的组件名，则通过 createComponent 创建一个组件类型的 VNode，否则创建一个未知的标签的 VNode。 如果是 tag 一个 Component 类型，则直接调用 createComponent 创建一个组件类型的 VNode 节点。**
 
   ` createComponent`方法的实现，它定义在`src/core/vdom/create-component.js`文件中：
 
