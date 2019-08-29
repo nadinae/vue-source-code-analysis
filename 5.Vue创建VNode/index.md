@@ -149,7 +149,7 @@ export function normalizeChildren (children: any): ?Array<VNode> {
 
 从截取`_createElement`的源码分析，他会对传入的`tag`进行判断，
   * **如果是字符串类型，接着判断如果是内置的节点就直接创建普通的VNode。**
-  
+
     现在已经对`children`已经规范化，然后调用：
     ```javascript
     if (config.isReservedTag(tag)) {
@@ -165,4 +165,5 @@ export function normalizeChildren (children: any): ?Array<VNode> {
   * **如果是为已注册的组件名，则通过 createComponent 创建一个组件类型的 VNode，否则创建一个未知的标签的 VNode。 如果是 tag 一个 Component 类型，则直接调用 createComponent 创建一个组件类型的 VNode 节点。**
 
   ` createComponent`方法的实现，它定义在`src/core/vdom/create-component.js`文件中：
+
 
