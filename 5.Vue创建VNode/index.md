@@ -149,6 +149,7 @@ export function normalizeChildren (children: any): ?Array<VNode> {
 
 从截取`_createElement`的源码分析，他会对传入的`tag`进行判断，
   * **如果是字符串类型，接着判断如果是内置的节点就直接创建普通的VNode。**
+  
     现在已经对`children`已经规范化，然后调用：
     ```javascript
     if (config.isReservedTag(tag)) {
