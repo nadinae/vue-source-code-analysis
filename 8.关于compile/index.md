@@ -347,3 +347,6 @@ function compile (
 
   * 生成代码
     `const code = generate(ast, options)`
+
+
+[![](compile.png)
