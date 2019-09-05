@@ -349,4 +349,4 @@ function compile (
     `const code = generate(ast, options)`
 
 
-[![](compile.png)
+![](compile.png)
