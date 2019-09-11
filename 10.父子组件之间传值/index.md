@@ -83,3 +83,15 @@ methods:{
 }
 ```
 
+### 兄弟组件之间的通信
+  * 借助中央事件总线
+
+  中央事件总线就是创建一个新的Vue实例 `export default var Bus = new Vue()`，然后就可以全局使用，在需要通信的组件中引入这个实例，然后在需要发送数据的组件中通过
+  ```javascript
+    Bus.$emit('sendMsg','发送数据')
+
+    //接收组件内执行
+    Bus.$on('sendMsg',function(val){
+      console.log(val)
+    })
+  ```
