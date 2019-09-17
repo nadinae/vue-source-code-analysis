@@ -125,7 +125,7 @@ const warnReservedPrefix = (target, key) => {
 }
 ```
 ## warnReservedPrefix
-当我们访问Vue data里面属性的时候可以直接`vm.xxx`访问，而不用`vm.$data.xxx`是因为Vue对data里面的属性做了一层代理，但是当我们data里面的属性值以**_**开头时，为了不和Vue的私有属性冲突就不会做代理，可以通过`vm.$data._xxx`访问，如果设置了以**_**开头的属性并且用`vm.xxx`访问，就会触发`warnReservedPrefix`方法，例如：
+当我们访问Vue data里面属性的时候可以直接`vm.xxx`访问，而不用`vm.$data.xxx`是因为Vue对data里面的属性做了一层代理，但是当我们data里面的属性值以 **_** 开头时，为了不和Vue的私有属性冲突就不会做代理，可以通过`vm.$data._xxx`访问，如果设置了以 **_** 开头的属性并且用`vm.xxx`访问，就会触发`warnReservedPrefix`方法，例如：
 ```javascript
 var vm = new Vue({data: {_name: 1}})
 vm._name // undefined
