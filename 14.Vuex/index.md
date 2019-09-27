@@ -9,7 +9,7 @@ function resetStoreVM (store, state, hot) {
   Vue.config.silent = true
   store._vm = new Vue({
     data: {
-      $$state: state
+      $state: state
     },
     computed
   })
